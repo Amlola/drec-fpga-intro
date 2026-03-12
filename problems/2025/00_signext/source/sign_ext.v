@@ -14,8 +14,8 @@ end
 
 `ifdef BEHAVIORAL
 assign o_y = {{(OUT_WIDTH - IN_WIDTH){i_x[IN_WIDTH - 1]}}, i_x};
-`else
 
+`else
 copy #(.WIDTH(IN_WIDTH)) copy_inst (
     .i_x(i_x),
     .o_y(o_y[IN_WIDTH-1:0])
