@@ -41,7 +41,7 @@ initial begin
 
     for (i = 0; i < NUMBER_TESTS; i = i + 1) begin
         input1    = $random;
-        expected1 = {{(OUT_WIDTH_TEST - IN_WIDTH_FIRST_TEST){input1[IN_WIDTH_FIRST_TEST - 1]}}, input1};
+        expected1 = {{(OUT_WIDTH_TEST-IN_WIDTH_FIRST_TEST){input1[IN_WIDTH_FIRST_TEST-1]}}, input1};
         #1;
 
         if (output1 !== expected1) begin
@@ -53,7 +53,7 @@ initial begin
 
     for (i = 0; i < NUMBER_TESTS; i = i + 1) begin
         input2    = $random;
-        expected2 = {{(OUT_WIDTH_TEST - IN_WIDTH_SECOND_TEST){input2[IN_WIDTH_SECOND_TEST - 1]}}, input2};
+        expected2 = {{(OUT_WIDTH_TEST-IN_WIDTH_SECOND_TEST){input2[IN_WIDTH_SECOND_TEST-1]}}, input2};
         #1;
 
         if (output2 !== expected2) begin
@@ -64,9 +64,9 @@ initial begin
     end
 
     if (incorrect != 0)
-        $display("%0d tests incorrect", incorrect);
+        $display("\n%0d tests incorrect", incorrect);
     else
-        $display("All tests passed");
+        $display("\nAll tests passed");
 
     $finish;
 end
