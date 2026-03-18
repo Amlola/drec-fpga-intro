@@ -6,14 +6,8 @@ module sign_ext #(
     output wire [OUT_WIDTH-1:0] o_y
 );
 
-initial begin
-    if (OUT_WIDTH < IN_WIDTH) begin
-        $display("ERROR: Invalid input parameters for sign extension");
-    end
-end
-
 `ifdef BEHAVIORAL
-assign o_y = {{(OUT_WIDTH - IN_WIDTH){i_x[IN_WIDTH - 1]}}, i_x};
+assign o_y = {{(OUT_WIDTH-IN_WIDTH){i_x[IN_WIDTH-1]}}, i_x};
 
 `else
 copy #(.WIDTH(IN_WIDTH)) copy_inst (
