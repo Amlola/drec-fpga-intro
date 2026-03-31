@@ -1,6 +1,6 @@
 `timescale 1ns/1ps
 
-module testbench;
+module clkdiv_tb;
 
 localparam F0 = 50_000_000;
 localparam F_out1 = 9600;
