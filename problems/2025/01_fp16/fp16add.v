@@ -63,7 +63,7 @@ always @(*) begin
     end
 
     else if ((exp_a == 0) && (exp_b == 0)) begin // DAZ
-        o_res = {1'b0, {(`FP16_WIDTH-1){1'b0}}};
+        o_res = {(`FP16_WIDTH){1'b0}};
     end
 
     else if (exp_a == 0) begin
