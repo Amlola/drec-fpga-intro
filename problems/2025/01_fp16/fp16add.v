@@ -47,12 +47,12 @@ always @(*) begin
     frac_b = i_b[`FP16_MANTISSA_WIDTH-1:0];
 
      if ((&exp_a && |frac_a) || (&exp_b && |frac_b)) begin // nan
-        o_res = {1'b0, {`FP16_EXPONENT_WIDTH{1'b1}}, {(`FP16_MANTISSA_WIDTH){1'b1}}};
+        o_res = {1'b0, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b1}}};
     end
 
     else if ((&exp_a && (frac_a == 0)) && (&exp_b && (frac_b == 0))) begin
         if (sign_a != sign_b) begin  // +inf + -inf
-            o_res = {1'b0, {`FP16_EXPONENT_WIDTH{1'b1}}, {(`FP16_MANTISSA_WIDTH){1'b1}}};
+            o_res = {1'b0, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b1}}};
         end
         else begin // inf
             if (&exp_a && (frac_a == 0))
@@ -63,7 +63,7 @@ always @(*) begin
     end
 
     else if ((exp_a == 0) && (exp_b == 0)) begin // DAZ
-        o_res = {(`FP16_WIDTH){1'b0}};
+        o_res = {`FP16_WIDTH{1'b0}};
     end
 
     else if (exp_a == 0) begin
@@ -102,7 +102,7 @@ always @(*) begin
         mant_small_ext = {mant_small, 1'b0};
 
         if ((exp_big - exp_small) >= (`FP16_MANTISSA_WIDTH + 2)) begin
-            mant_shifted = {(`FP16_MANTISSA_WIDTH+2){1'b0}};
+            mant_shifted = {(`FP16_MANTISSA_WIDTH + 2){1'b0}};
         end
         else begin
             mant_shifted = mant_small_ext >> (exp_big - exp_small);
@@ -138,7 +138,7 @@ always @(*) begin
         end
 
         if (exp_res <= 0) begin
-            o_res = {sign_res, {(`FP16_WIDTH-1){1'b0}}}; // FTZ
+            o_res = {sign_res, {(`FP16_WIDTH - 1){1'b0}}}; // FTZ
         end
         else if (exp_res >= `FP16_EXPONENT_OVERFLOW) begin
             o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b0}}};

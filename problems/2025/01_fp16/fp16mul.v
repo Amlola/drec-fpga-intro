@@ -36,11 +36,11 @@ always @(*) begin
     frac_b = i_b[`FP16_MANTISSA_WIDTH-1:0];
 
     if ((&exp_a && |frac_a) || (&exp_b && |frac_b)) begin // nan
-        o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {(`FP16_MANTISSA_WIDTH){1'b1}}};
+        o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b1}}};
     end
 
     else if ((&exp_a && (frac_a == 0) && (exp_b == 0)) || (&exp_b && (frac_b == 0) && (exp_a == 0)) ) begin // inf * 0
-        o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {(`FP16_MANTISSA_WIDTH){1'b1}}};
+        o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b1}}};
     end
 
     else if ((&exp_a && (frac_a == 0)) || (&exp_b && (frac_b == 0))) begin // inf
@@ -48,7 +48,7 @@ always @(*) begin
     end
 
     else if ((exp_a == 0) || (exp_b == 0)) begin // DAZ
-        o_res = {sign_res, {(`FP16_WIDTH-1){1'b0}}};
+        o_res = {sign_res, {(`FP16_WIDTH - 1){1'b0}}};
     end
 
     else begin
@@ -68,7 +68,7 @@ always @(*) begin
         end
 
         if (exp_res <= 0) begin // FTZ
-            o_res = {sign_res, {(`FP16_WIDTH-1){1'b0}}};
+            o_res = {sign_res, {(`FP16_WIDTH - 1){1'b0}}};
         end
         else if (exp_res >= `FP16_EXPONENT_OVERFLOW) begin
             o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b0}}};
