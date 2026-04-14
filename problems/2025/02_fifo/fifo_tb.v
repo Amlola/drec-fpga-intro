@@ -72,28 +72,28 @@ initial begin
     rst_n = 1'b0;
     #2 
     rst_n = 1'b1;
-    #2;
+    #2
 
     check_flags(1'b1, 1'b0);
 
     i_wr_en = 1'b1;
 
-    i_wr_data = 'h12; #2;
-    i_wr_data = 'h23; #2;
-    i_wr_data = 'h34; #2;
-    i_wr_data = 'h45; #2;
-    i_wr_data = 'h56; #2;
-    i_wr_data = 'h67; #2;
-    i_wr_data = 'h78; #2;
-    i_wr_data = 'h89; #2;
-    i_wr_data = 'h9A; #2;
-    i_wr_data = 'hAB; #2;
-    i_wr_data = 'hBC; #2;
-    i_wr_data = 'hCD; #2;
-    i_wr_data = 'hDE; #2;
-    i_wr_data = 'hEF; #2;
-    i_wr_data = 'hF1; #2;
-    i_wr_data = 'h1D; #2;
+    i_wr_data = 'h12; #2
+    i_wr_data = 'h23; #2
+    i_wr_data = 'h34; #2
+    i_wr_data = 'h45; #2
+    i_wr_data = 'h56; #2
+    i_wr_data = 'h67; #2
+    i_wr_data = 'h78; #2
+    i_wr_data = 'h89; #2
+    i_wr_data = 'h9A; #2
+    i_wr_data = 'hAB; #2
+    i_wr_data = 'hBC; #2
+    i_wr_data = 'hCD; #2
+    i_wr_data = 'hDE; #2
+    i_wr_data = 'hEF; #2
+    i_wr_data = 'hF1; #2
+    i_wr_data = 'h1D; #2
 
     i_wr_en = 1'b0;
 
