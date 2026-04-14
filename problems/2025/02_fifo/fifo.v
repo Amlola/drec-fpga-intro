@@ -27,9 +27,9 @@ assign o_wr_full  = (rd_ptr[ADDR_WIDTH] != wr_ptr[ADDR_WIDTH]) && (rd_ptr[ADDR_W
 
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-        rd_ptr <= {ADDR_WIDTH{1'b0}};;
-        wr_ptr <= {ADDR_WIDTH{1'b0}};;
-        o_rd_data <= {(ADDR_WIDTH + 1){1'b0}};;
+        rd_ptr <= {ADDR_WIDTH{1'b0}};
+        wr_ptr <= {ADDR_WIDTH{1'b0}};
+        o_rd_data <= {(ADDR_WIDTH + 1){1'b0}};
     end 
     else begin
         if (i_wr_en && !o_wr_full) begin
