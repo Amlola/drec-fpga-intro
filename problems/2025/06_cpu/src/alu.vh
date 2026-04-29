@@ -1,0 +1,37 @@
+`ifndef ALU_VH
+`define ALU_VH
+
+`define ALU_OP_WIDTH 4
+`define SHIFT_WIDTH 5
+
+`define OPCODE_LUI    7'b0110111
+`define OPCODE_AUIPC  7'b0010111
+`define OPCODE_OP_IMM 7'b0010011
+`define OPCODE_OP     7'b0110011
+
+`define ALU_FUNCT3_ADD_SUB 3'b000
+`define ALU_FUNCT3_SLL     3'b001
+`define ALU_FUNCT3_SLT     3'b010
+`define ALU_FUNCT3_SLTU    3'b011
+`define ALU_FUNCT3_XOR     3'b100
+`define ALU_FUNCT3_SRL_SRA 3'b101
+`define ALU_FUNCT3_OR      3'b110
+`define ALU_FUNCT3_AND     3'b111
+
+`define ALU_FUNCT7_ADD 7'b0000000
+`define ALU_FUNCT7_SUB 7'b0100000
+`define ALU_FUNCT7_SRL 7'b0000000
+`define ALU_FUNCT7_SRA 7'b0100000
+
+`define ALU_ADD  `ALU_OP_WIDTH'd0
+`define ALU_SUB  `ALU_OP_WIDTH'd1
+`define ALU_OR   `ALU_OP_WIDTH'd2
+`define ALU_AND  `ALU_OP_WIDTH'd3
+`define ALU_XOR  `ALU_OP_WIDTH'd4
+`define ALU_SRL  `ALU_OP_WIDTH'd5
+`define ALU_SRA  `ALU_OP_WIDTH'd6
+`define ALU_SLL  `ALU_OP_WIDTH'd7
+`define ALU_SLT  `ALU_OP_WIDTH'd8
+`define ALU_SLTU `ALU_OP_WIDTH'd9
+
+`endif // ALU_VH
