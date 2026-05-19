@@ -157,9 +157,8 @@ always @(*) begin
             bypass     = 1'b1;
             bypass_res = {sign_big, exp_big, mant_big[`FP16_MANTISSA_WIDTH-1:0]};
         end
-        else begin
+        else
             mant_shifted = mant_small_ext >> exp_diff;
-        end
     end
 end
 
@@ -167,7 +166,7 @@ always @(posedge clk) begin
     sign_big_s1   <= sign_big;
     sign_small_s1 <= sign_small;
 
-    exp_big_s1   <= exp_big;
+    exp_big_s1 <= exp_big;
     
     mant_big_ext_s1 <= mant_big_ext;
     mant_shifted_s1 <= mant_shifted;
@@ -226,9 +225,8 @@ always @(*) begin
             else begin
                 norm_shift = shift(mant_res);
 
-                if (norm_shift >= exp_big_s1) begin
+                if (norm_shift >= exp_big_s1)
                     exp_res = 0;
-                end
                 else begin
                     mant_res = mant_res << norm_shift;
                     exp_res  = $signed({1'b0, exp_big_s1}) - norm_shift;
@@ -236,15 +234,12 @@ always @(*) begin
             end
         end
 
-        if (exp_res <= 0) begin
+        if (exp_res <= 0)
             o_res = {sign_res, {(`FP16_WIDTH - 1){1'b0}}}; // FTZ
-        end
-        else if (exp_res >= `FP16_EXPONENT_OVERFLOW) begin
+        else if (exp_res >= `FP16_EXPONENT_OVERFLOW)
             o_res = {sign_res, {`FP16_EXPONENT_WIDTH{1'b1}}, {`FP16_MANTISSA_WIDTH{1'b0}}};
-        end
-        else begin
+        else
             o_res = {sign_res, exp_res[`FP16_EXPONENT_WIDTH-1:0], mant_res[`FP16_MANTISSA_WIDTH:1]};
-        end
     end
 end
 
