@@ -41,7 +41,7 @@
 # Project-Wide Assignments
 # ========================
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output
-set_global_assignment -name LAST_QUARTUS_VERSION "23.1std.1 Lite Edition"
+set_global_assignment -name LAST_QUARTUS_VERSION "25.1std.0 Lite Edition"
 set_global_assignment -name SDC_FILE fpga.sdc
 set_global_assignment -name VERILOG_FILE src/fpga_top.v
 set_global_assignment -name VERILOG_FILE src/system_top.v
@@ -59,7 +59,6 @@ set_global_assignment -name VERILOG_FILE src/lsu.v
 set_global_assignment -name VERILOG_FILE src/hex_display.v
 set_global_assignment -name VERILOG_FILE src/mmio_xbar.v
 set_global_assignment -name VERILOG_FILE src/ctrl_74hc595.v
-set_global_assignment -name VERILOG_FILE src/signext.v
 set_global_assignment -name QIP_FILE src/altera/ram1rw32x256.qip
 set_global_assignment -name QIP_FILE src/altera/imem1r32x256.qip
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
